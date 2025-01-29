@@ -1,0 +1,179 @@
+@import "tailwindcss";
+
+/* Define theme variables */
+:root {
+  --color-primary-pink: #F8CDE0; /* Primary pink for specific elements */
+  --color-secondary-pink: #F9DAE9; /* Lighter pink for hover or accents */
+  --color-darkGrey: #111827; /* Dark background */
+  --color-grey: #6b7280; /* Neutral grey */
+  --color-lightGrey: #d1d5db; /* Light grey */
+  --color-white: #ffffff; /* Pure white */
+  --color-text: #1f2937; /* Neutral text color */
+  --color-bg: #ffffff; /* Light background */
+}
+
+/* Dark theme overrides */
+/* Dark theme overrides */
+.dark {
+  --color-bg: #1e293b; /* Dark background */
+  --color-text: #d1d5db; /* Light text color in dark mode */
+  --color-grey: #6b7280; /* Neutral grey */
+  --color-white: #ffffff; /* Pure white for text in dark mode */
+  --color-lightGrey: #9ca3af; /* Light grey for secondary text in dark mode */
+  --color-lightBlue: #60a5fa; /* Light blue for links in dark mode */
+}
+
+/* Light theme overrides */
+/* Light theme overrides */
+.light {
+  --color-bg: #ffffff; /* Light background */
+  --color-text: #1f2937; /* Dark text color in light mode */
+  --color-grey: #6b7280; /* Neutral grey */
+  --color-primary-pink: #F8CDE0; /* Primary pink for specific elements */
+  --color-secondary-pink: #F9DAE9; /* Lighter pink for hover or accents */
+  --color-white: #1f2937; /* Dark text for light mode */
+  --color-lightGrey: #4b5563; /* Darker grey for light mode */
+  --color-lightBlue: #3b82f6; /* Blue for links in light mode */
+}
+/* Global styles */
+body {
+  background: var(--color-bg); /* Neutral background */
+  color: var(--color-text);
+  font-family: 'Inter', sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Links */
+a {
+  color: var(--color-grey);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--color-primary-pink);
+  text-decoration: underline;
+}
+
+/* Navbar styles */
+nav {
+  background-color: var(--color-primary-pink);
+  color: var(--color-white);
+  box-shadow: 0px 4px 10px rgba(248, 205, 224, 0.5); /* Subtle pink glow */
+}
+
+/* Navbar links */
+nav a {
+  color: var(--color-white);
+}
+
+nav a:hover {
+  color: var(--color-secondary-pink);
+}
+
+/* Buttons */
+button {
+  background-color: var(--color-grey);
+  color: var(--color-white);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--color-primary-pink);
+  box-shadow: 0px 4px 10px rgba(248, 205, 224, 0.5);
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+/* Card styles */
+.card {
+  background: var(--color-primary-pink);
+  color: var(--color-darkGrey); /* Ensure text is visible on pink background */
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 16px rgba(248, 205, 224, 0.5);
+}
+
+/* Input and Textarea */
+input, textarea {
+  background-color: var(--color-lightGrey);
+  color: var(--color-darkGrey);
+  border: 1px solid var(--color-grey);
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--color-primary-pink);
+  box-shadow: 0px 0px 5px rgba(248, 205, 224, 0.8);
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+th, td {
+  border: 1px solid var(--color-grey);
+  padding: 12px;
+  text-align: left;
+  color: var(--color-text);
+}
+
+th {
+  background-color: var(--color-lightGrey);
+  font-weight: 700;
+}
+
+tr:nth-child(even) {
+  background-color: var(--color-lightGrey);
+}
+
+/* Utility classes for spacing and alignment */
+.centered-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary-pink);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-secondary-pink);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-grey);
+}
