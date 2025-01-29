@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "../supabase";
 import { SunIcon, MoonIcon, Bars3Icon, XMarkIcon, ChevronDownIcon } from "@heroicons/react/20/solid";
+import logo from "../assets/logo.png";  // Import your logo image
 
 const Navbar = ({ setDarkMode }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -39,13 +40,11 @@ const Navbar = ({ setDarkMode }) => {
   };
 
   return (
-    <nav className="flex justify-between items-center px-6 py-4 bg-pink-50 text-pink-700 shadow-md rounded-b-lg">
-      <Link
-        to="/"
-        className="text-3xl font-semibold tracking-wide text-pink-700 hover:text-pink-600 transition-all duration-300"
-      >
-        BlogApp
-      </Link>
+<nav className="flex justify-between items-center px-6 py-4 bg-pink-50 text-pink-700 shadow-md rounded-b-lg h-20">
+<Link to="/" className="flex items-center">
+        {/* Use an img tag to display the logo */}
+        <img src={logo} alt="BlogApp Logo" className="h-40 object-contain" />
+        </Link>
       <div className="hidden md:flex items-center gap-6">
         <Link
           to="/"
