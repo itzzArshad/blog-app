@@ -99,8 +99,8 @@ const BlogEditor = ({ onSuccess, blog = null, resetEditing }) => {
     menubar: true,
     plugins: [
       "advlist", "autolink", "lists", "link", "image", "charmap", 
-      "print", "preview", "anchor", "searchreplace", "visualblocks", 
-      "code", "fullscreen", "textcolor"
+      "preview", "anchor", "searchreplace", "visualblocks", 
+      "code", "fullscreen"
     ],
     toolbar:
       "undo redo | formatselect | fontselect | forecolor backcolor | " +
@@ -108,13 +108,22 @@ const BlogEditor = ({ onSuccess, blog = null, resetEditing }) => {
       "bullist numlist outdent indent | removeformat | image",
     images_upload_url: "/upload", // Adjust as needed
     font_formats:
-      "Arial=arial,helvetica,sans-serif; " +
-      "Courier New=courier new, courier, monospace; " +
       "Georgia=georgia, serif; " +
-      "Tahoma=tahoma, geneva, sans-serif; " + 
-      "Times New Roman=times new roman, times, serif; " +
-      "Verdana=verdana, geneva, sans-serif;",
-    content_style: "body { font-family: Arial, sans-serif; font-size: 14px; }",
+      "Merriweather=merriweather, serif; " +
+      "Playfair Display=playfair display, serif; " +
+      "Roboto=roboto, sans-serif; " +
+      "Open Sans=open sans, sans-serif; " +
+      "Lato=lato, sans-serif; " +
+      "Poppins=poppins, sans-serif; " +
+      "Courier New=courier new, monospace; " +
+      "Source Code Pro=source code pro, monospace;",
+    content_style: `
+      body {
+        font-family: 'Georgia', serif;
+        font-size: 16px;
+        line-height: 1.6;
+      }
+    `,
   }}
 />
 

@@ -5,7 +5,6 @@ import Home from "./pages/Home";
 import BlogDetails from "./pages/BlogDetails";
 import AdminPanel from "./pages/AdminPanel";
 import Login from "./pages/Login";
-import "./index.css";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 const App = () => {
@@ -24,8 +23,8 @@ const App = () => {
     <Router>
       <Navbar setDarkMode={setDarkMode} />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/blog/:id" element={<BlogDetails />} />
+        <Route path="/" element={<Home darkMode={darkMode} />} />
+        <Route path="/blog/:id" element={<BlogDetails darkMode={darkMode} />} />
         <Route path="/login" element={<Login />} />
         <Route
           path="/admin"

@@ -177,3 +177,17 @@ tr:nth-child(even) {
 ::-webkit-scrollbar-track {
   background: var(--color-grey);
 }
+
+
+/* For TinyMCE content */
+.blog-content h1 {
+  color: var(--color-text); /* Default text color */
+  font-size: 2.25rem; /* Adjust size */
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.dark .blog-content h1 {
+  color: var(--color-white); /* Make the heading color white in dark mode */
+}
+
+

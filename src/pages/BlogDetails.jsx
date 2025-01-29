@@ -26,7 +26,7 @@ const BlogDetails = ({ darkMode }) => {
     const fetchComments = async () => {
       const { data, error } = await supabase
         .from("comments")
-        .select("username, comment_text, created_at") // Ensuring created_at is selected
+        .select("username, comment_text, created_at")
         .eq("blog_id", id);
       if (error) console.error("Error fetching comments:", error);
       else setComments(data);
@@ -57,7 +57,7 @@ const BlogDetails = ({ darkMode }) => {
       blog_id: id,
       username: username,
       comment_text: newComment,
-      created_at: new Date().toISOString(), // Ensure created_at is set
+      created_at: new Date().toISOString(),
     };
 
     const { error } = await supabase.from("comments").insert([newCommentData]);
@@ -73,8 +73,14 @@ const BlogDetails = ({ darkMode }) => {
   if (!blog) return <div>Loading...</div>;
 
   return (
-    <div className={`max-w-5xl mx-auto p-6 rounded-md shadow-lg ${darkMode ? "dark:bg-[#1e293b] dark:text-white" : "bg-white text-gray-800"}`}>
-      <h1 className={`text-5xl font-bold mb-6 text-center ${darkMode ? "text-gray-200" : "text-gray-800"}`}>
+    
+    <div
+      className={`max-w-5xl mx-auto p-6 rounded-md shadow-lg ${darkMode ? "bg-[#1e293b] text-white" : "bg-white text-gray-800"}`}
+    >
+      
+      <h1
+        className={`text-5xl font-bold mb-6 text-center ${darkMode ? "text-gray-200" : "text-gray-800"}`}
+      >
         {blog.title}
       </h1>
       <img
@@ -82,12 +88,42 @@ const BlogDetails = ({ darkMode }) => {
         alt={blog.title}
         className="w-full h-96 object-cover rounded-md shadow-md mb-6 transition-transform duration-300 ease-in-out hover:scale-105"
       />
-      <div 
-        className={`text-lg leading-8 mb-8 ${darkMode ? "text-gray-300" : "text-gray-700"}`}
-        dangerouslySetInnerHTML={{ __html: blog.content }}
-      />
+      <div
+  className={`text-lg leading-8 mb-8 blog-content ${darkMode ? "text-gray-300" : "text-gray-700"}`}
+  dangerouslySetInnerHTML={{ __html: blog.content }}
+/>
 
-      <hr className={`border-gray-300 mb-8 ${darkMode ? "dark:border-gray-600" : ""}`} />
+{/* Apply TinyMCE Styles for the Content */}
+<style>
+  {`
+    .blog-content {
+      font-family: 'Georgia', serif;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    .blog-content a {
+      color: ${darkMode ? "#F9A8D4" : "#7F1D1D"};
+      text-decoration: underline;
+    }
+    .blog-content h1, .blog-content h2, .blog-content h3 {
+      color: ${darkMode ? "#E5E7EB" : "#1F2937"};
+    }
+    .blog-content blockquote {
+      border-left: 4px solid ${darkMode ? "#F9A8D4" : "#7F1D1D"};
+      padding-left: 16px;
+      margin-left: 0;
+      color: ${darkMode ? "#D1D5DB" : "#333333"};
+    }
+    .blog-content ul, .blog-content ol {
+      list-style-position: inside;
+    }
+    .blog-content li {
+      margin-bottom: 8px;
+    }
+  `}
+</style>
+
+      <hr className={`border-gray-300 mb-8 ${darkMode ? "border-gray-600" : ""}`} />
 
       {/* Comments Section */}
       <div className="comments-section">
@@ -109,7 +145,9 @@ const BlogDetails = ({ darkMode }) => {
                   <p className={`font-semibold ${darkMode ? "text-gray-200" : "text-gray-800"}`}>
                     {comment.username || "Anonymous"}
                     <span className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-500"} ml-2`}>
-                      {comment.created_at ? new Date(comment.created_at).toLocaleString() : "Unknown Date"}
+                      {comment.created_at
+                        ? new Date(comment.created_at).toLocaleString()
+                        : "Unknown Date"}
                     </span>
                   </p>
                   <p className={`mt-2 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
@@ -126,7 +164,9 @@ const BlogDetails = ({ darkMode }) => {
         </div>
 
         {/* Add Comment */}
-        <div className={`mt-10 p-6 border ${darkMode ? "dark:bg-gray-800 dark:border-gray-600" : "border-gray-300 bg-gray-50"} rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300`}>
+        <div
+          className={`mt-10 p-6 border ${darkMode ? "dark:bg-gray-800 dark:border-gray-600" : "border-gray-300 bg-gray-50"} rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300`}
+        >
           <h3 className={`text-2xl font-semibold mb-6 ${darkMode ? "text-gray-200" : "text-gray-800"}`}>
             Add a Comment
           </h3>
@@ -168,7 +208,11 @@ const BlogDetails = ({ darkMode }) => {
               className={`block border ${darkMode ? "dark:bg-gray-700 dark:border-gray-600" : "border-gray-300 bg-white"} rounded-md shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300`}
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             >
-              <img src={otherBlog.image_url} alt={otherBlog.title} className="w-full h-40 object-cover" />
+              <img
+                src={otherBlog.image_url}
+                alt={otherBlog.title}
+                className="w-full h-40 object-cover"
+              />
               <div className="p-4">
                 <h3 className={`text-lg font-semibold ${darkMode ? "text-gray-200" : "text-gray-800"}`}>
                   {otherBlog.title}
