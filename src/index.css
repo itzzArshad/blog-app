@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;700&family=Playfair+Display:wght@400;600&display=swap');
 @import "tailwindcss";
+
+
 
 /* Define theme variables */
 :root {
@@ -33,7 +36,9 @@
   --color-secondary-pink: #F9DAE9; /* Lighter pink for hover or accents */
   --color-white: #1f2937; /* Dark text for light mode */
   --color-lightGrey: #4b5563; /* Darker grey for light mode */
-  --color-lightBlue: #3b82f6; /* Blue for links in light mode */
+  --color-lightBlue: #3b82f6;
+  
+  /* Blue for links in light mode */
 }
 /* Global styles */
 body {
@@ -191,3 +196,55 @@ tr:nth-child(even) {
 }
 
 
+/* Light Mode Gradient */
+/* Author Card - Transparent Glassmorphism */
+/* Author Card - Transparent Glassmorphism */
+.author-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.75), rgba(249, 218, 234, 0.75)); /* Stronger Light Mode Gradient */
+  border: 1px solid rgba(255, 182, 193, 0.6); /* Soft pink border */
+  border-radius: 12px;
+  color: var(--color-darkGrey);
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 8px 16px rgba(249, 182, 193, 0.4); /* Light pink glow */
+  position: relative;
+  backdrop-filter: blur(10px); /* Glass effect */
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Dark Mode Gradient */
+.dark .author-card {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.85), rgba(226, 149, 176, 0.85)); /* Dark Mode: Black & Pink */
+  border: 1px solid rgba(226, 149, 176, 0.8); /* Dark pink border */
+  box-shadow: 0px 8px 16px rgba(226, 149, 176, 0.5);
+  color: var(--color-white);
+}
+
+/* Text Styling */
+.author-card h2,
+.author-card p {
+  color: var(--color-darkGrey); /* Darker text for Light Mode */
+}
+
+.dark .author-card h2,
+.dark .author-card p {
+  color: var(--color-white);
+}
+
+/* Glowing effect */
+.author-card:hover::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 250%;
+  height: 250%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 10%, transparent 80%);
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.author-card:hover::before {
+  opacity: 1;
+}
