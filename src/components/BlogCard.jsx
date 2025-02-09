@@ -51,7 +51,7 @@ const BlogCard = ({ blog }) => {
         </h2>
         {/* Use `dangerouslySetInnerHTML` to render HTML content */}
         <p
-          className="text-sm text-[var(--color-lightGrey)] mt-2 line-clamp-3"
+          className="text-sm text-[var(--color-grey)] mt-2 line-clamp-3"
           dangerouslySetInnerHTML={{ __html: blog.content }} // Render HTML content
         />
       </div>
@@ -61,7 +61,7 @@ const BlogCard = ({ blog }) => {
         <span className="text-sm text-[var(--color-lightBlue)]">
           Read More →
         </span>
-        <span className="text-xs text-[var(--color-lightGrey)]">
+        <span className="text-xs text-[var(--color-grey)]">
           {new Date(blog.created_at).toLocaleDateString()}
         </span>
       </div>
